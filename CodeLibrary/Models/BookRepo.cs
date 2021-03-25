@@ -1,26 +1,35 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Dapper.Contrib.Extensions;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Dapper;
 
 namespace CodeLibrary.Models
 {
     public class BookRepo
     {
-        public BookRepo()
+        private IDbConnection dbConnection;
+
+        public BookRepo(string connString)
         {
+            this.dbConnection = new SqlConnection(connString);
         }
 
-        public void AddBook(Book book)
+        public Book AddBook(Book book)
         {
-            using (IDbConnection connection = new SqlConnection(Helper.ConStr("Books")))
-            {
-                connection.Execute("InsertBook", book, commandType: CommandType.StoredProcedure);
-            }
+            var id = this.dbConnection.Insert(book);
+            book.Id = (int) id;
+            return book;
         }
+
+        //public BookRepo()
+        //{
+        //}
+
+        //public void AddBook(Book book)
+        //{
+        //    using (IDbConnection connection = new SqlConnection(Helper.ConStr("Books")))
+        //    {
+        //        connection.Execute("InsertBook", book, commandType: CommandType.StoredProcedure);
+        //    }
+        //}
     }
 }
