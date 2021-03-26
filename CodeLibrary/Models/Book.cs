@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CodeLibrary.Models
+﻿namespace CodeLibrary.Models
 {
     public class Book
     {
@@ -13,6 +7,6 @@ namespace CodeLibrary.Models
         public string Author { get; set; }
         public decimal Price { get; set; }
         public string Description { get; set; }
-        //public int CountryId { get; set; }
+        public int CountryId { get; set; }
     }
 }
