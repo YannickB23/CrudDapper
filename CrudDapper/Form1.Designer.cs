@@ -41,15 +41,17 @@ namespace CrudDapper
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.lblAppTitle = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.grvBooks = new System.Windows.Forms.DataGridView();
+            this.lblId = new System.Windows.Forms.Label();
+            this.lblId1 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.grvBooks)).BeginInit();
             this.SuspendLayout();
             // 
             // lblTitle
             // 
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.Location = new System.Drawing.Point(92, 124);
+            this.lblTitle.Location = new System.Drawing.Point(30, 153);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(61, 29);
             this.lblTitle.TabIndex = 0;
@@ -59,7 +61,7 @@ namespace CrudDapper
             // 
             this.lblAuthor.AutoSize = true;
             this.lblAuthor.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAuthor.Location = new System.Drawing.Point(92, 185);
+            this.lblAuthor.Location = new System.Drawing.Point(30, 214);
             this.lblAuthor.Name = "lblAuthor";
             this.lblAuthor.Size = new System.Drawing.Size(82, 29);
             this.lblAuthor.TabIndex = 1;
@@ -69,18 +71,17 @@ namespace CrudDapper
             // 
             this.lblDescription.AutoSize = true;
             this.lblDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDescription.Location = new System.Drawing.Point(92, 303);
+            this.lblDescription.Location = new System.Drawing.Point(30, 332);
             this.lblDescription.Name = "lblDescription";
             this.lblDescription.Size = new System.Drawing.Size(135, 29);
             this.lblDescription.TabIndex = 2;
             this.lblDescription.Text = "Description";
-
             // 
             // lblPrice
             // 
             this.lblPrice.AutoSize = true;
             this.lblPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrice.Location = new System.Drawing.Point(92, 248);
+            this.lblPrice.Location = new System.Drawing.Point(30, 277);
             this.lblPrice.Name = "lblPrice";
             this.lblPrice.Size = new System.Drawing.Size(69, 29);
             this.lblPrice.TabIndex = 3;
@@ -88,28 +89,28 @@ namespace CrudDapper
             // 
             // txtTitle
             // 
-            this.txtTitle.Location = new System.Drawing.Point(279, 124);
+            this.txtTitle.Location = new System.Drawing.Point(217, 153);
             this.txtTitle.Name = "txtTitle";
             this.txtTitle.Size = new System.Drawing.Size(300, 22);
             this.txtTitle.TabIndex = 4;
             // 
             // txtDescription
             // 
-            this.txtDescription.Location = new System.Drawing.Point(279, 310);
+            this.txtDescription.Location = new System.Drawing.Point(217, 339);
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Size = new System.Drawing.Size(300, 22);
             this.txtDescription.TabIndex = 5;
             // 
             // txtPrice
             // 
-            this.txtPrice.Location = new System.Drawing.Point(279, 248);
+            this.txtPrice.Location = new System.Drawing.Point(217, 277);
             this.txtPrice.Name = "txtPrice";
             this.txtPrice.Size = new System.Drawing.Size(300, 22);
             this.txtPrice.TabIndex = 6;
             // 
             // txtAuthor
             // 
-            this.txtAuthor.Location = new System.Drawing.Point(279, 185);
+            this.txtAuthor.Location = new System.Drawing.Point(217, 214);
             this.txtAuthor.Name = "txtAuthor";
             this.txtAuthor.Size = new System.Drawing.Size(300, 22);
             this.txtAuthor.TabIndex = 7;
@@ -117,7 +118,7 @@ namespace CrudDapper
             // btnInsert
             // 
             this.btnInsert.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInsert.Location = new System.Drawing.Point(335, 382);
+            this.btnInsert.Location = new System.Drawing.Point(262, 382);
             this.btnInsert.Name = "btnInsert";
             this.btnInsert.Size = new System.Drawing.Size(196, 34);
             this.btnInsert.TabIndex = 8;
@@ -127,18 +128,20 @@ namespace CrudDapper
             // 
             // btnUpdate
             // 
+            this.btnUpdate.Enabled = false;
             this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdate.Location = new System.Drawing.Point(335, 422);
+            this.btnUpdate.Location = new System.Drawing.Point(262, 422);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(196, 34);
             this.btnUpdate.TabIndex = 9;
             this.btnUpdate.Text = "Update Record";
             this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnDelete
             // 
             this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.Location = new System.Drawing.Point(335, 462);
+            this.btnDelete.Location = new System.Drawing.Point(262, 462);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(196, 36);
             this.btnDelete.TabIndex = 10;
@@ -150,28 +153,50 @@ namespace CrudDapper
             this.lblAppTitle.AutoSize = true;
             this.lblAppTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAppTitle.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.lblAppTitle.Location = new System.Drawing.Point(90, 24);
+            this.lblAppTitle.Location = new System.Drawing.Point(17, 24);
             this.lblAppTitle.Name = "lblAppTitle";
-            this.lblAppTitle.Size = new System.Drawing.Size(458, 39);
+            this.lblAppTitle.Size = new System.Drawing.Size(442, 38);
             this.lblAppTitle.TabIndex = 11;
             this.lblAppTitle.Text = "CRUD Form for the book app";
             // 
-            // dataGridView1
+            // grvBooks
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(666, 124);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(597, 292);
-            this.dataGridView1.TabIndex = 12;
+            this.grvBooks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grvBooks.Location = new System.Drawing.Point(547, 37);
+            this.grvBooks.Name = "grvBooks";
+            this.grvBooks.RowHeadersWidth = 51;
+            this.grvBooks.RowTemplate.Height = 24;
+            this.grvBooks.Size = new System.Drawing.Size(834, 324);
+            this.grvBooks.TabIndex = 12;
+            this.grvBooks.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grvBooks_CellDoubleClick);
+            // 
+            // lblId
+            // 
+            this.lblId.AutoSize = true;
+            this.lblId.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblId.Location = new System.Drawing.Point(211, 98);
+            this.lblId.Name = "lblId";
+            this.lblId.Size = new System.Drawing.Size(0, 32);
+            this.lblId.TabIndex = 13;
+            // 
+            // lblId1
+            // 
+            this.lblId1.AutoSize = true;
+            this.lblId1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblId1.Location = new System.Drawing.Point(30, 101);
+            this.lblId1.Name = "lblId1";
+            this.lblId1.Size = new System.Drawing.Size(33, 29);
+            this.lblId1.TabIndex = 14;
+            this.lblId1.Text = "Id";
             // 
             // frmBooksApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1393, 552);
-            this.Controls.Add(this.dataGridView1);
+            this.ClientSize = new System.Drawing.Size(1114, 441);
+            this.Controls.Add(this.lblId1);
+            this.Controls.Add(this.lblId);
+            this.Controls.Add(this.grvBooks);
             this.Controls.Add(this.lblAppTitle);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnUpdate);
@@ -186,7 +211,8 @@ namespace CrudDapper
             this.Controls.Add(this.lblTitle);
             this.Name = "frmBooksApp";
             this.Text = "BooksApp";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Load += new System.EventHandler(this.frmBooksApp_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.grvBooks)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -206,7 +232,9 @@ namespace CrudDapper
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Label lblAppTitle;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView grvBooks;
+        private System.Windows.Forms.Label lblId;
+        private System.Windows.Forms.Label lblId1;
     }
 }
 
