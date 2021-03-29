@@ -53,9 +53,9 @@ namespace CodeLibrary.Models
         {
             DynamicParameters param = new DynamicParameters();
             param.Add("@Id", book.Id);
-            param.Add("@Title", book.Title);                 
-            param.Add("@Author", book.Author);              
-            param.Add("@Price", book.Price);                
+            param.Add("@Title", book.Title);
+            param.Add("@Author", book.Author);
+            param.Add("@Price", book.Price);
             param.Add("@Description", book.Description);
             param.Add("@CountryId", book.CountryId);
 
@@ -65,10 +65,30 @@ namespace CodeLibrary.Models
             }
         }
 
-        public void DeleteBook(Book book)
+        public void DeleteBook(int id)
+        {
+            using (IDbConnection connection = new SqlConnection(Helper.ConStr("Books")))
+            {
+                connection.Execute("DeleteBook", new { id }, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        #region MyRegion Optie 2 voor delete book
+        //public void DeleteBook(int id)
+        //{
+        //    DynamicParameters param = new DynamicParameters();
+        //    param.Add("@id", id);
+        //    using (IDbConnection connection = new SqlConnection(Helper.ConStr("Books")))
+        //    {
+        //        connection.Execute("DeleteBook", param, commandType: CommandType.StoredProcedure);
+        //    }
+        //}
+        #endregion
+
+        public int AddBookReturnId(Book book)
         {
             DynamicParameters param = new DynamicParameters();
-            param.Add("@Id", book.Id);
+            param.Add("@Id", DbType.Int64, direction: ParameterDirection.Output);
             param.Add("@Title", book.Title);
             param.Add("@Author", book.Author);
             param.Add("@Price", book.Price);
@@ -77,7 +97,8 @@ namespace CodeLibrary.Models
 
             using (IDbConnection connection = new SqlConnection(Helper.ConStr("Books")))
             {
-                connection.Execute("DeleteBook", param, commandType: CommandType.StoredProcedure);
+                var id = connection.Query<int>("AddBookReturnId", param, commandType: CommandType.StoredProcedure).Single();
+                return id;
             }
         }
     }

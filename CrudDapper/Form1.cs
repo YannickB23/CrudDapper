@@ -70,7 +70,23 @@ namespace CrudDapper
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            repo.DeleteBook(int.Parse(lblID.Text.Substring(lblID.Text.LastIndexOf(' ') + 1)));
+            repo.DeleteBook(int.Parse(lblId.Text.Substring(lblId.Text.LastIndexOf(' ') + 1)));
+            LoadBooks();
+        }
+
+        private void InsertReturnId_Click(object sender, EventArgs e)
+        {
+            Book book = new Book
+            {
+                Title = txtTitle.Text,
+                Author = txtAuthor.Text,
+                Price = decimal.Parse(txtPrice.Text),
+                Description = txtDescription.Text,
+                CountryId = 1
+            };
+
+            int id = repo.AddBookReturnId(book);
+            MessageBox.Show("The new Id in the table is: " + id.ToString());
             LoadBooks();
         }
     }

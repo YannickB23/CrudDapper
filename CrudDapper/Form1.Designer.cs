@@ -44,6 +44,7 @@ namespace CrudDapper
             this.grvBooks = new System.Windows.Forms.DataGridView();
             this.lblId = new System.Windows.Forms.Label();
             this.lblId1 = new System.Windows.Forms.Label();
+            this.InsertReturnId = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.grvBooks)).BeginInit();
             this.SuspendLayout();
             // 
@@ -118,7 +119,7 @@ namespace CrudDapper
             // btnInsert
             // 
             this.btnInsert.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInsert.Location = new System.Drawing.Point(262, 382);
+            this.btnInsert.Location = new System.Drawing.Point(35, 422);
             this.btnInsert.Name = "btnInsert";
             this.btnInsert.Size = new System.Drawing.Size(196, 34);
             this.btnInsert.TabIndex = 8;
@@ -130,7 +131,7 @@ namespace CrudDapper
             // 
             this.btnUpdate.Enabled = false;
             this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdate.Location = new System.Drawing.Point(262, 422);
+            this.btnUpdate.Location = new System.Drawing.Point(263, 422);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(196, 34);
             this.btnUpdate.TabIndex = 9;
@@ -141,9 +142,9 @@ namespace CrudDapper
             // btnDelete
             // 
             this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.Location = new System.Drawing.Point(262, 462);
+            this.btnDelete.Location = new System.Drawing.Point(489, 422);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(196, 36);
+            this.btnDelete.Size = new System.Drawing.Size(196, 34);
             this.btnDelete.TabIndex = 10;
             this.btnDelete.Text = "Delete Record";
             this.btnDelete.UseVisualStyleBackColor = true;
@@ -189,11 +190,22 @@ namespace CrudDapper
             this.lblId1.TabIndex = 14;
             this.lblId1.Text = "Id";
             // 
+            // InsertReturnId
+            // 
+            this.InsertReturnId.Location = new System.Drawing.Point(715, 422);
+            this.InsertReturnId.Name = "InsertReturnId";
+            this.InsertReturnId.Size = new System.Drawing.Size(196, 34);
+            this.InsertReturnId.TabIndex = 15;
+            this.InsertReturnId.Text = "button1";
+            this.InsertReturnId.UseVisualStyleBackColor = true;
+            this.InsertReturnId.Click += new System.EventHandler(this.InsertReturnId_Click);
+            // 
             // frmBooksApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1219, 577);
+            this.Controls.Add(this.InsertReturnId);
             this.Controls.Add(this.lblId1);
             this.Controls.Add(this.lblId);
             this.Controls.Add(this.grvBooks);
@@ -235,6 +247,7 @@ namespace CrudDapper
         private System.Windows.Forms.DataGridView grvBooks;
         private System.Windows.Forms.Label lblId;
         private System.Windows.Forms.Label lblId1;
+        private System.Windows.Forms.Button InsertReturnId;
     }
 }
 
