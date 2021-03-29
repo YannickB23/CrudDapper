@@ -193,7 +193,7 @@ namespace CrudDapper
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1114, 441);
+            this.ClientSize = new System.Drawing.Size(1219, 577);
             this.Controls.Add(this.lblId1);
             this.Controls.Add(this.lblId);
             this.Controls.Add(this.grvBooks);

@@ -6,11 +6,12 @@ namespace CrudDapper
 {
     public partial class frmBooksApp : Form
     {
+        private BookRepo repo = new BookRepo();
+
         public frmBooksApp()
         {
             InitializeComponent();
         }
-
 
         private void btnInsert_Click(object sender, EventArgs e)
         {
@@ -23,17 +24,16 @@ namespace CrudDapper
                 CountryId = 1
             };
 
-            BookRepo repo = new BookRepo();
             repo.AddBook(book);
             LoadBooks();
         }
 
         private void LoadBooks()
         {
-            BookRepo repo = new BookRepo();
             this.grvBooks.DataSource = null;
             grvBooks.DataSource = repo.GetBooks();
         }
+
         private void frmBooksApp_Load(object sender, EventArgs e)
         {
             LoadBooks();
@@ -64,8 +64,13 @@ namespace CrudDapper
                 CountryId = 1
             };
 
-            BookRepo repo = new BookRepo();
             repo.UpdateBook(book);
+            LoadBooks();
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            repo.DeleteBook(int.Parse(lblID.Text.Substring(lblID.Text.LastIndexOf(' ') + 1)));
             LoadBooks();
         }
     }

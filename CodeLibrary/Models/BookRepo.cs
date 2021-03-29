@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using Dapper.Contrib.Extensions;
 
 namespace CodeLibrary.Models
 {
@@ -67,7 +68,17 @@ namespace CodeLibrary.Models
         public void DeleteBook(Book book)
         {
             DynamicParameters param = new DynamicParameters();
-            param.
+            param.Add("@Id", book.Id);
+            param.Add("@Title", book.Title);
+            param.Add("@Author", book.Author);
+            param.Add("@Price", book.Price);
+            param.Add("@Description", book.Description);
+            param.Add("@CountryId", book.CountryId);
+
+            using (IDbConnection connection = new SqlConnection(Helper.ConStr("Books")))
+            {
+                connection.Execute("DeleteBook", param, commandType: CommandType.StoredProcedure);
+            }
         }
     }
 }
